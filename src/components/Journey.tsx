@@ -33,7 +33,7 @@ export function Journey() {
   ];
 
   return (
-    <section id="journey" className="py-20 px-4 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900">
+    <section id="journey" className="py-16 sm:py-20 px-4 sm:px-6 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900">
       <div className="max-w-6xl mx-auto">
         <motion.div
           ref={ref}
@@ -41,56 +41,58 @@ export function Journey() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-center mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-4">
             Mijn{' '}
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               Ontwikkelingsreis
             </span>
           </h2>
-          <p className="text-center text-slate-600 dark:text-slate-400 mb-16 max-w-2xl mx-auto">
+          <p className="text-center text-slate-600 dark:text-slate-400 mb-12 sm:mb-16 max-w-2xl mx-auto">
             Van simpele websites naar kunstmatige intelligentie - een reis van constante groei en uitdaging
           </p>
         </motion.div>
 
         <div className="relative">
-          {/* Connecting line */}
-          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-400 via-purple-400 to-pink-500 transform -translate-x-1/2" />
+          {/* Connecting line - both mobile and desktop */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-400 via-purple-400 to-pink-500 transform -translate-x-1/2" />
 
-          <div className="space-y-12">
+          <div className="space-y-8 sm:space-y-12">
             {journeySteps.map((step, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                className={`flex flex-col md:flex-row gap-8 items-center ${
-                  index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                }`}
+                className="relative"
               >
-                <div className="flex-1">
-                  <div
-                    className={`bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow ${
-                      index % 2 === 0 ? 'md:text-right' : 'md:text-left'
-                    }`}
-                  >
-                    <div className="inline-block mb-3">
-                      <span className={`text-sm font-bold bg-gradient-to-r ${step.color} bg-clip-text text-transparent`}>
-                        {step.year}
-                      </span>
+                {/* Icon in center on the line */}
+                <div className="absolute left-1/2 top-0 transform -translate-x-1/2 z-10">
+                  <div className={`p-3 sm:p-4 bg-gradient-to-br ${step.color} rounded-full shadow-lg`}>
+                    <step.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+                  </div>
+                </div>
+
+                {/* Card - centered on mobile, alternating on desktop */}
+                <div className="pt-20 sm:pt-0 flex flex-col md:flex-row gap-8 items-center">
+                  <div className={`flex-1 w-full md:w-auto ${index % 2 === 0 ? 'md:text-right' : 'md:text-left md:order-2'}`}>
+                    <div className="bg-white dark:bg-slate-800 p-5 sm:p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+                      <div className="inline-block mb-3">
+                        <span className={`text-sm font-bold bg-gradient-to-r ${step.color} bg-clip-text text-transparent`}>
+                          {step.year}
+                        </span>
+                      </div>
+                      <h3 className="text-xl sm:text-2xl font-bold mb-3 text-slate-800 dark:text-white">{step.title}</h3>
+                      <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 mb-3 leading-relaxed">{step.description}</p>
+                      <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 italic leading-relaxed">💡 {step.learning}</p>
                     </div>
-                    <h3 className="text-2xl font-bold mb-3 text-slate-800 dark:text-white">{step.title}</h3>
-                    <p className="text-slate-600 dark:text-slate-300 mb-3">{step.description}</p>
-                    <p className="text-sm text-slate-500 dark:text-slate-400 italic">💡 {step.learning}</p>
                   </div>
-                </div>
 
-                <div className="relative flex-shrink-0">
-                  <div className={`p-4 bg-gradient-to-br ${step.color} rounded-full shadow-lg`}>
-                    <step.icon className="w-8 h-8 text-white" />
-                  </div>
+                  {/* Spacer for desktop layout */}
+                  <div className="hidden md:block flex-shrink-0 w-16"></div>
+                  
+                  {/* Empty flex item for alternating layout on desktop */}
+                  <div className={`flex-1 hidden md:block ${index % 2 === 0 ? '' : 'order-1'}`} />
                 </div>
-
-                <div className="flex-1 hidden md:block" />
               </motion.div>
             ))}
           </div>
@@ -100,11 +102,14 @@ export function Journey() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-16 text-center"
+          className="mt-12 sm:mt-16 text-center relative"
         >
-          <div className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 p-6 rounded-2xl text-white">
-            <h4 className="text-xl font-bold mb-2">Volgende Stap: HBO Wiskunde</h4>
-            <p className="text-blue-100 dark:text-blue-200">
+          {/* Connection line to final card */}
+          <div className="absolute left-1/2 bottom-full h-12 sm:h-16 w-0.5 bg-gradient-to-b from-pink-500 to-transparent transform -translate-x-1/2" />
+          
+          <div className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 p-5 sm:p-6 rounded-2xl text-white shadow-lg">
+            <h4 className="text-lg sm:text-xl font-bold mb-2">Volgende Stap: HBO Wiskunde</h4>
+            <p className="text-sm sm:text-base text-blue-100 dark:text-blue-200 leading-relaxed">
               Om me nog dieper te verdiepen in AI/ML en de wiskundige fundamenten ervan te begrijpen
             </p>
           </div>

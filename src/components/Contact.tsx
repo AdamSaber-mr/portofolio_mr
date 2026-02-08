@@ -38,7 +38,7 @@ export function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-20 px-4 bg-white dark:bg-slate-900">
+    <section id="contact" className="py-16 sm:py-20 px-4 sm:px-6 bg-white dark:bg-slate-900">
       <div className="max-w-6xl mx-auto">
         <motion.div
           ref={ref}
@@ -46,30 +46,30 @@ export function Contact() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-center mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-4">
             Neem{' '}
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               Contact Op
             </span>
           </h2>
-          <p className="text-center text-slate-600 dark:text-slate-400 mb-16 max-w-2xl mx-auto">
+          <p className="text-center text-slate-600 dark:text-slate-400 mb-12 sm:mb-16 max-w-2xl mx-auto">
             Geïnteresseerd in samenwerken of heb je een stageplek beschikbaar? Ik hoor graag van je!
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-2 gap-8 sm:gap-12">
           {/* Contact Information */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h3 className="text-2xl font-bold mb-6 text-slate-800 dark:text-white">Contact Informatie</h3>
+            <h3 className="text-xl sm:text-2xl font-bold mb-6 text-slate-800 dark:text-white">Contact Informatie</h3>
 
-            <div className="space-y-6 mb-8">
+            <div className="space-y-5 sm:space-y-6 mb-6 sm:mb-8">
               {contactInfo.map((info, index) => (
-                <div key={index} className="flex items-start gap-4">
-                  <div className="p-3 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/50 dark:to-purple-900/50 rounded-lg flex-shrink-0">
+                <div key={index} className="flex items-start gap-3 sm:gap-4">
+                  <div className="p-2.5 sm:p-3 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/50 dark:to-purple-900/50 rounded-lg flex-shrink-0">
                     <info.icon className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                   </div>
                   <div>
@@ -77,7 +77,7 @@ export function Contact() {
                     {info.link ? (
                       <a
                         href={info.link}
-                        className="text-slate-800 dark:text-slate-200 font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                        className="text-slate-800 dark:text-slate-200 font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors break-all"
                       >
                         {info.value}
                       </a>
@@ -89,34 +89,34 @@ export function Contact() {
               ))}
             </div>
 
-            <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-slate-800 dark:to-slate-700 p-6 rounded-2xl">
+            <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-slate-800 dark:to-slate-700 p-5 sm:p-6 rounded-2xl">
               <h4 className="font-bold text-slate-800 dark:text-white mb-3">Wat ik zoek in een stage:</h4>
-              <ul className="space-y-2 text-slate-600 dark:text-slate-300">
+              <ul className="space-y-2.5 text-slate-600 dark:text-slate-300">
                 <li className="flex items-start gap-2">
-                  <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
-                  <span>Uitdagende projecten in AI/ML of Backend Development</span>
+                  <span className="text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0">✓</span>
+                  <span className="text-sm sm:text-base leading-relaxed">Uitdagende projecten in AI/ML of Backend Development</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
-                  <span>Mogelijkheid om te leren van ervaren developers</span>
+                  <span className="text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0">✓</span>
+                  <span className="text-sm sm:text-base leading-relaxed">Mogelijkheid om te leren van ervaren developers</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
-                  <span>Ruimte voor groei en persoonlijke ontwikkeling</span>
+                  <span className="text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0">✓</span>
+                  <span className="text-sm sm:text-base leading-relaxed">Ruimte voor groei en persoonlijke ontwikkeling</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
-                  <span>Een team dat waarde hecht aan innovatie</span>
+                  <span className="text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0">✓</span>
+                  <span className="text-sm sm:text-base leading-relaxed">Een team dat waarde hecht aan innovatie</span>
                 </li>
               </ul>
             </div>
 
-            <div className="mt-6 flex gap-4">
+            <div className="mt-6 flex gap-3 sm:gap-4">
               <a
                 href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg transition-colors"
+                className="p-3 sm:p-3.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg transition-colors"
                 aria-label="GitHub"
               >
                 <Github className="w-5 h-5 text-slate-700 dark:text-slate-300" />
@@ -125,7 +125,7 @@ export function Contact() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg transition-colors"
+                className="p-3 sm:p-3.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="w-5 h-5 text-slate-700 dark:text-slate-300" />
@@ -139,7 +139,7 @@ export function Contact() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
                   Naam
@@ -150,7 +150,7 @@ export function Contact() {
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                  className="w-full px-4 py-3.5 sm:py-3 border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
                   placeholder="Jouw naam"
                 />
               </div>
@@ -165,7 +165,7 @@ export function Contact() {
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                  className="w-full px-4 py-3.5 sm:py-3 border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
                   placeholder="jouw.email@example.com"
                 />
               </div>
@@ -180,7 +180,7 @@ export function Contact() {
                   rows={6}
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-none"
+                  className="w-full px-4 py-3.5 sm:py-3 border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-none"
                   placeholder="Vertel me over de stageplek of je vraag..."
                 />
               </div>
@@ -201,7 +201,7 @@ export function Contact() {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-16 pt-8 border-t border-slate-200 dark:border-slate-700 text-center text-slate-600 dark:text-slate-400"
+          className="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-slate-200 dark:border-slate-700 text-center text-sm sm:text-base text-slate-600 dark:text-slate-400"
         >
           <p>
             © 2026 Adam Saber. Gemaakt met passie voor technologie en innovatie.
